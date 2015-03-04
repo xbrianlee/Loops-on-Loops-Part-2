@@ -1,3 +1,9 @@
+var script = document.createElement('script');
+script.src = 'http://code.jquery.com/jquery-1.11.0.min.js';
+script.type = 'text/javascript';
+document.getElementsByTagName('head')[0].appendChild(script);
+
+
 // Merge sort
 function merge(left, right, arr) {
     var a = 0;
@@ -149,46 +155,65 @@ function siftDown(arr, start, end) {
     }
 }
 
-var arr = [];
-for(var i = 0; i < 100000; ++i) {
-    arr.push(Math.random);
+
+// Test speed for each sorting algorithm
+function speedTest(arr) {
+    // Merge sort speed test
+    var start_merge_sort = performance.now();
+    var merge_sorted = mergeSort(arr);
+    var end_merge_sort = performance.now();
+    var merge_time = end_merge_sort - start_merge_sort;
+
+    // Quick sort speed test
+    var start_quick_sort = performance.now();
+    var quick_sorted = quickSort(arr);
+    var end_quick_sort = performance.now();
+    var quick_time = end_quick_sort - start_quick_sort;
+
+    // Bubble sort speed test
+    var start_bubble_sort = performance.now();
+    var bubble_sorted = quickSort(arr);
+    var end_bubble_sort = performance.now();
+    var bubble_time = end_bubble_sort - start_bubble_sort;
+
+    // Heap sort speed test
+    var start_heap_sort = performance.now();
+    var heap_sorted = quickSort(arr);
+    var end_heap_sort = performance.now();
+    var heap_time = end_heap_sort - start_heap_sort;
+
+    console.log(merge_time);
+    console.log(quick_time);
+    console.log(bubble_time);
+    console.log(heap_time);
 }
-//var arr = ['lol', 'fa', 'a', 'ba', '6', '1', 'lol', 'fa', 'a', 'ba', '6', '1',
-//           'z', 'q', 'v', 'asdf', 'aaa', 'fewq', 'a'];
-// Merge sort speed test
-var start_merge_sort = performance.now();
-var merge_sorted = mergeSort(arr);
-var end_merge_sort = performance.now();
-var merge_time = end_merge_sort - start_merge_sort;
 
-// Quick sort speed test
-var start_quick_sort = performance.now();
-var quick_sorted = quickSort(arr);
-var end_quick_sort = performance.now();
-var quick_time = end_quick_sort - start_quick_sort;
-
-// Bubble sort speed test
-var start_bubble_sort = performance.now();
-var bubble_sorted = quickSort(arr);
-var end_bubble_sort = performance.now();
-var bubble_time = end_bubble_sort - start_bubble_sort;
-
-// Heap sort speed test
-var start_heap_sort = performance.now();
-var heap_sorted = quickSort(arr);
-var end_heap_sort = performance.now();
-var heap_time = end_heap_sort - start_heap_sort;
-
-console.log(merge_time);
-console.log(quick_time);
-console.log(bubble_time);
-console.log(heap_time);
-
-
-// Files
-// Check for the various File API support.
-if (window.File && window.FileReader && window.FileList && window.Blob) {
-  // Great success! All the File APIs are supported.
-} else {
-  alert('The File APIs are not fully supported in this browser.');
+function testInputFile(text) {
+    var arr = [];
+    for(var i = 0; i < text.length; ++i) {
+        arr.push(text[i]);
+    }
+    speedTest(arr);
+    
 }
+// Upload text file
+document.getElementById('file').onchange = function() {
+    var input_array = [];
+    var file = this.files[0];
+
+    var reader = new FileReader();
+    reader.onload = function(progressEvent) {
+        console.log(this.result);
+        
+        var lines = this.result.split('\n');
+        var input_text = lines + '';
+        for(var line = 0; line < lines.length; ++line) {
+            console.log(lines[line]);
+        }
+        var split_txt = input_text.split(/[\s,.]+/);
+        testInputFile(split_txt);
+
+    };
+    reader.readAsText(file);
+}
+
