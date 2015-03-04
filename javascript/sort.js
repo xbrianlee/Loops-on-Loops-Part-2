@@ -12,6 +12,21 @@
 //  
 /////////////////////////////////////////////////////////////////////////
 
+// Insertion sort
+function insertionSort(arr) {
+    var value;                     
+    for (var i=0; i < arr.length; i++) {
+    
+        // store the current value because it may shift later
+        value = arr[i];
+        for (var j=i-1; j > -1 && arr[j] > value; j--) {
+            arr[j+1] = arr[j];
+        }
+        arr[j+1] = value;
+    }
+    return arr;
+}
+
 // Merge sort
 function merge(left, right, arr) {
     var a = 0;
@@ -33,6 +48,7 @@ function sort(arr, tmp, len) {
 
 function mergeSort(arr) {
     sort(arr, arr.slice(), arr.length);
+    return arr;
 }
 
 // Quick sort
@@ -132,35 +148,62 @@ function siftDown(arr, start, end) {
     }
 }
 
-
-// Test speed for each sorting algorithm
-function speedTest(arr) {
-    // Merge sort speed test
-    var start_merge_sort = performance.now();
-    var merge_sorted = mergeSort(arr);
-    var end_merge_sort = performance.now();
-    var merge_time = end_merge_sort - start_merge_sort;
-
+// Speed tests for each algorithm
+function quickSpeed(arr) {
     // Quick sort speed test
     var start_quick_sort = performance.now();
     var quick_sorted = quickSort(arr);
     var end_quick_sort = performance.now();
-    var quick_time = end_quick_sort - start_quick_sort;
+    return end_quick_sort - start_quick_sort;
+}
+function mergeSpeed(arr) {
+    // Merge sort speed test
+    var start_merge_sort = performance.now();
+    var merge_sorted = mergeSort(arr);
+    var end_merge_sort = performance.now();
+    return end_merge_sort - start_merge_sort;
+}
 
+function bubbleSpeed(arr) {
     // Bubble sort speed test
     var start_bubble_sort = performance.now();
     var bubble_sorted = quickSort(arr);
     var end_bubble_sort = performance.now();
-    var bubble_time = end_bubble_sort - start_bubble_sort;
+    return end_bubble_sort - start_bubble_sort;
+}
 
+function heapSpeed(arr) {
     // Heap sort speed test
     var start_heap_sort = performance.now();
     var heap_sorted = quickSort(arr);
     var end_heap_sort = performance.now();
-    var heap_time = end_heap_sort - start_heap_sort;
+    return end_heap_sort - start_heap_sort;
+}
+function insertionSpeed(arr) {
+    // Insertion sort speed test
+    var start_insertion_sort = performance.now();
+    var insertion_sorted = insertionSort(arr);
+    var end_insertion_sort = performance.now();
+    return end_insertion_sort - start_insertion_sort;
+}
 
-    console.log("Merge sort: " + merge_time);
+// Test speed for each sorting algorithm
+function speedTest(arr) {
+    var quick_time = quickSpeed(arr);
+    var merge_time = mergeSpeed(arr);
+    var bubble_time = bubbleSpeed(arr); 
+    var heap_time = heapSpeed(arr);
+    var insertion_time = insertionSpeed(arr);
+
+    // Insertion sort speed test
+    var start_insertion_sort = performance.now();
+    var insertion_sorted = insertionSort(arr);
+    var end_insertion_sort = performance.now();
+    var insertion_time = end_insertion_sort - start_insertion_sort;
+
+    console.log("Insertion sort: " + insertion_time);
     console.log("Quick sort: " + quick_time);
+    console.log("Merge sort: " + merge_time);
     console.log("Bubble sort: " + bubble_time);
     console.log("Heap sort: " + heap_time);
 }
