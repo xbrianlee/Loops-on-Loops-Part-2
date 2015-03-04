@@ -1,10 +1,13 @@
 -- Insertion Sort in Haskell
+-- Note: Use ":set +s" to see computation time and memory usage.
+module Main where
 
-insertion_sort :: (a -> a -> Bool) -> [a] -> [a]
-insertion_sort pred []     = []
-insertion_sort pred (x:xs) = insert pred x (insertion_sort pred xs)
-insert :: (a -> a -> Bool) -> a -> [a] -> [a]
-insert pred x [] = [x]
-insert pred x (y:ys)
-  | pred x y = (x:y:ys)
-  | otherwise = y:(insert pred x ys)
+import System.IO
+import Data.List (insert)
+
+main = do
+  theInput <- readFile "input.txt"
+  putStrLn (insertionSort theInput) 
+
+insertionSort :: Ord a => [a] -> [a]
+insertionSort = foldr insert []

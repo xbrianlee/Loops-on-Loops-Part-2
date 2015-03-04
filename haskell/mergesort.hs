@@ -1,19 +1,27 @@
 -- Merge Sort in Haskell
+-- Note: Use ":set +s" to see computation time and memory usage.
 
-split :: [a] -> ([a],[a])
-split xs = go xs xs where
-  go (x:xs) (_:_:zs) = (x:us,vs) where (us,vs)=go xs zs
-  go    xs   _       = ([],xs)
-merge :: (a -> a -> Bool) -> [a] -> [a] -> [a]
-merge pred xs []         = xs
-merge pred [] ys         = ys
-merge pred (x:xs) (y:ys)
-    | pred x y = x: merge pred xs (y:ys)
-    | otherwise = y: merge pred (x:xs) ys
+module Main where
 
-mergesort :: (a -> a -> Bool) -> [a] -> [a]
-mergesort pred []   = []
-mergesort pred [x]  = [x]
-mergesort pred xs = merge pred (mergesort pred xs1) (mergesort pred xs2)
-  where
-    (xs1,xs2) = split xs
+import System.IO
+
+main = do
+  theInput <- readFile "input.txt"
+  putStrLn (mergesort theInput)    
+
+mergesort'merge :: (Ord a) => [a] -> [a] -> [a]
+mergesort'merge [] xs = xs
+mergesort'merge xs [] = xs
+mergesort'merge (x:xs) (y:ys)
+    | (x < y) = x:mergesort'merge xs (y:ys)
+    | otherwise = y:mergesort'merge (x:xs) ys
+ 
+mergesort'splitinhalf :: [a] -> ([a], [a])
+mergesort'splitinhalf xs = (take n xs, drop n xs)
+    where n = (length xs) `div` 2 
+ 
+mergesort :: (Ord a) => [a] -> [a]
+mergesort xs 
+    | (length xs) > 1 = mergesort'merge (mergesort ls) (mergesort rs)
+    | otherwise = xs
+    where (ls, rs) = mergesort'splitinhalf xs

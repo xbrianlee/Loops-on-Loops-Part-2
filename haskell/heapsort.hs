@@ -1,35 +1,24 @@
 -- Heap Sort in Haskell
+-- Note: Use ":set +s" to see computation time and memory usage.
 
-import Data.List
+module Main where
+
+import Data.Graph.Inductive.Internal.Heap(
+  Heap(..),insert,findMin,deleteMin)
+
+import System.IO
+
+main = do
+  theInput <- readFile "input.txt"
+  putStrLn (heapsort theInput)    
  
-swap :: Int -> Int -> [a] -> [a]
-swap i j xs | i == j    = xs
-swap i j xs | otherwise = initial ++ (xs !! b) : middle ++ (xs !! a) : end 
-  where [a,b] = sort [i,j]
-    initial = take a xs
-    middle  = take (b-a-1) (drop (a+1) xs)
-    end     = drop (b+1) xs
+build :: Ord a => [(a,b)] -> Heap a b
+build = foldr insert Empty
  
-largest :: Ord a => Int -> Int -> [a] -> Int
-largest i hs xs = 
-  let large = if (l < hs) && ((xs !! l) > (xs !! i)) then l else i
-  in if (r < hs) && ((xs !! r) > (xs !! large)) then r else large
-  where l = 2 * i + 1
-        r = 2 * i + 2
+toList :: Ord a => Heap a b -> [(a,b)]
+toList Empty = []
+toList h = x:toList r
+           where (x,r) = (findMin h,deleteMin h)
  
-heapify :: Ord a => Int -> Int -> [a] -> [a]
-heapify i hs xs = 
-  if (large /= i) then heapify large hs (swap large i xs)
-  else xs
-  where large = largest i hs xs
- 
-buildheap :: Ord a => Int -> [a] -> [a]
-buildheap 0 xs = heapify 0 (length xs) xs
-buildheap i xs = buildheap (i - 1) (heapify i (length xs) xs)
- 
-hpsort i xs = let swapped = swap 0 i xs
-  in if i /= 1 then hpsort (i - 1) (heapify 0 i swapped)
-     else (heapify 0 i swapped)
- 
-heapsort xs = let heap = buildheap (length xs `div` 2) xs
-  in heapsorting (length xs - 1) heap
+heapsort :: Ord a => [a] -> [a]
+heapsort = (map fst) . toList . build . map (\x->(x,x))
