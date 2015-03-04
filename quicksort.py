@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
-# # # # # # # # # # #
-# Quicksort Strings #
-# # # # # # # # # # #
+# # # # # # #
+# Quicksort #
+# # # # # # #
 
 import sys
 import timeit
@@ -13,13 +13,18 @@ def qsort(arr):
      else:
           return qsort([x for x in arr[1:] if x<arr[0]]) + [arr[0]] + qsort([x for x in arr[1:] if x>=arr[0]])
 
-print ''
-print 'Starting to sort', len(sys.argv), 'items.'
+def read_words(words_file):
+    return [word for line in open(words_file, 'r') for word in line.split()]
 
-start = timeit.default_timer()
-result = qsort(sys.argv)
-stop = timeit.default_timer()
+sort_name = "Quicksort"
 
-print 'Done. (Duration:', stop - start, 'seconds)'
-print 'Sorted Input: ', str(result)
-print ''
+if (len(sys.argv) == 2):
+	word_list = read_words(sys.argv[1])
+	print 'Starting', sort_name, 'on', sys.argv[1], '...'
+	start = timeit.default_timer()
+	result = qsort(word_list)
+	stop = timeit.default_timer()
+	print 'Done. (Duration:', stop - start, 'seconds)'
+	# print 'Sorted Input: ', str(result)
+else:
+	print sort_name, ': Invalid input'
