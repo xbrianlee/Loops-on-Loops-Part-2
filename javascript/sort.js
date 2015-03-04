@@ -35,34 +35,6 @@ function mergeSort(arr) {
     sort(arr, arr.slice(), arr.length);
 }
 
-/*// Merge sort
-function merge(left, right) {
-    var result = [];
-    var left_itor = 0;
-    var right_itor = 0;
-    while (left_itor < left.length && right_itor < right.length) {
-        if (left[left_itor] < right[right_itor]) {
-            result.push(left[left_itor++]);
-        }else {
-            result.push(right[right_itor++]);
-        }
-     }
-     return result.concat(left.slice(left_itor)).
-                   concat(right.slice(right_itor));
-}
-
-function mergeSort(arr) {
-    if (arr.length < 2) {
-        return arr;
-    }
-
-    var mid = Math.floor(arr.length / 2);
-    var left = arr.slice(0, mid); 
-    var right = arr.slice(mid);
-
-    return merge(mergeSort(left), mergeSort(right));
-} */
-
 // Quick sort
 function swap(items, firstIndex, secondIndex){
     var temp = items[firstIndex];
