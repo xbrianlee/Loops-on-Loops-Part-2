@@ -1,8 +1,16 @@
-var script = document.createElement('script');
-script.src = 'http://code.jquery.com/jquery-1.11.0.min.js';
-script.type = 'text/javascript';
-document.getElementsByTagName('head')[0].appendChild(script);
-
+// /////////////////////////////////////////////////////////////////////
+// John Kang
+// CMPS 112
+// This Javascript program tests the speeds of various sorting algorithms 
+// in Javascript. 
+//
+// To run the program: 
+//  -Open index.html in a browser, preferably Firefox or Chrome.
+//  -Open the Javascript console in the browser.
+//  -Click the Browse button and open input.txt which should be
+//   in the same directory as the project.
+//  
+/////////////////////////////////////////////////////////////////////////
 
 // Merge sort
 function merge(left, right, arr) {
@@ -63,11 +71,9 @@ function swap(items, firstIndex, secondIndex){
 }
 
 function partition(items, left, right) {
-
     var pivot   = items[Math.floor((right + left) / 2)],
         i = left,
         j = right;
-
     while (i <= j) {
         while (items[i] < pivot) {
             i++;
@@ -99,8 +105,7 @@ function quickSort(items, left, right) {
 }
 
 // Bubble sort
-function bubbleSort(arr)
-{
+function bubbleSort(arr) {
     var swapped;
     do {
         swapped = false;
@@ -182,10 +187,10 @@ function speedTest(arr) {
     var end_heap_sort = performance.now();
     var heap_time = end_heap_sort - start_heap_sort;
 
-    console.log(merge_time);
-    console.log(quick_time);
-    console.log(bubble_time);
-    console.log(heap_time);
+    console.log("Merge sort: " + merge_time);
+    console.log("Quick sort: " + quick_time);
+    console.log("Bubble sort: " + bubble_time);
+    console.log("Heap sort: " + heap_time);
 }
 
 function testInputFile(text) {

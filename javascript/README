@@ -1,0 +1,10 @@
+John Kang
+CMPS 112
+This Javascript program tests the speeds of various sorting algorithms 
+in Javascript. 
+
+To run the program: 
+ -Open index.html in a browser, preferably Firefox or Chrome.
+ -Open the Javascript console in the browser.
+ -Click the Browse button and open input.txt which should be
+  in the same directory as the project.
