@@ -5,12 +5,13 @@
 # # # # # # # # 
 
 import sys
-from random import randint
+import random
+import string
  
 def random_word(n):
     result = ""
     for i in range(0,int(n)):
-        result = result + str(randint(0,9))
+        result = result + random.choice(string.hexdigits)
     return result
 
 def random_gen(new_file, number, dimension):
