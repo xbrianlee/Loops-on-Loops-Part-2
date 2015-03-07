@@ -11,7 +11,7 @@ import string
 def random_word(n):
     result = ""
     for i in range(0,int(n)):
-        result = result + random.choice(string.hexdigits)
+        result = result + random.choice(string.ascii_letters)
     return result
 
 def random_gen(new_file, number, dimension):
