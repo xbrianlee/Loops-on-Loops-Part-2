@@ -23,11 +23,12 @@ sort_name = "Bubblesort"
 
 if (len(sys.argv) == 2):
 	word_list = read_words(sys.argv[1])
-	print 'Starting', sort_name, 'on', sys.argv[1], '...'
+	#print 'Starting', sort_name, 'on', sys.argv[1], '...'
 	start = timeit.default_timer()
 	result = bubbleSort(word_list)
 	stop = timeit.default_timer()
-	print 'Done. (Duration:', stop - start, 'seconds)'
+	#print 'Done. (Duration:', stop - start, 'seconds)'
 	# print 'Sorted Input: ', str(result)
+	print '"' + str(stop - start) + '"'
 else:
 	print sort_name, ': Invalid input'
