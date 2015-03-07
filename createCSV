@@ -1,0 +1,17 @@
+max=50000
+round=1
+total_rounds=$((max / 500))
+echo Starting $0 for $total_rounds rounds: 
+echo '"Word Count","Time"' > results.csv
+for ((i=500; i<=$max; i = i + 500 )) ; 
+do
+    python make_tfile.py $i 5
+    echo -n '"' >> results.csv
+    echo -n "$i" >> results.csv
+    echo -n '",' >> results.csv
+    python $1 input.txt >> results.csv
+    echo -n $round ... 
+	((round++))
+done
+rm input.txt
+echo Done!
