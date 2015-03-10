@@ -1,5 +1,5 @@
-//Heap Sort algorithm for sorting strings in a file. 
-//Code cited from Princeton at http://algs4.cs.princeton.edu/24pq/Heap.java.html
+//Merge Sort algorithm for sorting strings in a file. 
+//Code cited from Princeton at http://algs4.cs.princeton.edu/22mergesort/Merge.java.html
 
 
 import java.lang.*;
@@ -16,8 +16,8 @@ public class heap{
 		 if(args.length!=1){
 			System.err.println("inputfile ");
 		 }
-		 
-		 String[] t1 = new String[500];
+		 long startTime = System.currentTimeMillis();	 
+		 String[] t1 = new String[5000];
 		 String tempStr;
 		try{
 			BufferedReader orig = new BufferedReader(new FileReader(args[0]));
@@ -32,9 +32,9 @@ public class heap{
 		}
 
 		heap.sort(t1);
-        for(int i=0;i<t1.length;i++){
-            System.out.println(t1[i]);
-        }
+		long endTime = System.currentTimeMillis();
+
+		System.out.println(endTime - startTime);
    }
 	public static void sort(Comparable[] pq) {
         int N = pq.length;

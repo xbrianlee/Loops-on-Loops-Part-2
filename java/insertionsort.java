@@ -15,8 +15,8 @@ public class insertionsort{
 		 if(args.length!=1){
 			System.err.println("inputfile ");
 		 }
-		 
-		 String[] t1 = new String[500];
+		 long startTime = System.currentTimeMillis();
+		 String[] t1 = new String[50000];
 		 String tempStr;
 		try{
 			BufferedReader orig = new BufferedReader(new FileReader(args[0]));
@@ -44,8 +44,8 @@ public class insertionsort{
 		t1[i + 1] = tempStr;
 		}
 
-        for(int m=0;m<t1.length;m++){
-            System.out.println(t1[m]);
-        }
+		long endTime = System.currentTimeMillis();
+
+		System.out.println(endTime - startTime);
    }
 }

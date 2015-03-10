@@ -1,7 +1,3 @@
-//Bubble Sort algorithm for sorting strings in a file. 
-//Some code cited from Stack Over Flow at 
-//http://stackoverflow.com/questions/19214447/java-string-bubble-sorting
-
 import java.lang.*;
 import java.io.*;
 import java.lang.Object;
@@ -14,8 +10,9 @@ public class bubblesort{
 		 if(args.length!=1){
 			System.err.println("inputfile ");
 		 }
-		 
-		 String[] t1 = new String[500];
+		 long startTime = System.currentTimeMillis();
+
+		 String[] t1 = new String[50000];
 		 String tempStr;
 		try{
 			BufferedReader orig = new BufferedReader(new FileReader(args[0]));
@@ -41,8 +38,9 @@ public class bubblesort{
                 }
             }
         }
-        for(int i=0;i<t1.length;i++){
-            System.out.println(t1[i]);
-        }
+		long endTime = System.currentTimeMillis();
+
+		System.out.println(endTime - startTime);
+        
    }
 }

@@ -16,8 +16,8 @@ public class quicksort{
 		 if(args.length!=1){
 			System.err.println("inputfile ");
 		 }
-		 
-		 String[] t1 = new String[500];
+		 long startTime = System.currentTimeMillis();		 
+		 String[] t1 = new String[50000];
 		 String tempStr;
 		try{
 			BufferedReader orig = new BufferedReader(new FileReader(args[0]));
@@ -32,9 +32,9 @@ public class quicksort{
 		}
 
 		quicksort.sort(t1);
-        for(int i=0;i<t1.length;i++){
-            System.out.println(t1[i]);
-        }
+		long endTime = System.currentTimeMillis();
+
+		System.out.println(endTime - startTime);
    }
 	public static void sort(Comparable[] a) {
        // StdRandom.shuffle(a);

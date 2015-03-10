@@ -1,7 +1,3 @@
-//Merge Sort algorithm for sorting strings in a file. 
-//Code cited from Princeton at http://algs4.cs.princeton.edu/22mergesort/Merge.java.html
-
-
 import java.lang.*;
 import java.io.*;
 import java.lang.Object;
@@ -16,8 +12,8 @@ public class Merge{
 		 if(args.length!=1){
 			System.err.println("inputfile ");
 		 }
-		 
-		 String[] t1 = new String[500];
+		 long startTime = System.currentTimeMillis();		 
+		 String[] t1 = new String[50000];
 		 String tempStr;
 		try{
 			BufferedReader orig = new BufferedReader(new FileReader(args[0]));
@@ -32,9 +28,9 @@ public class Merge{
 		}
 
 		Merge.sort(t1);
-        for(int i=0;i<t1.length;i++){
-            System.out.println(t1[i]);
-        }
+		long endTime = System.currentTimeMillis();
+
+		System.out.println(endTime - startTime);
    }
        private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
         assert isSorted(a, lo, mid);
