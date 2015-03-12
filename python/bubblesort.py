@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# Paul-Valentin Mini (pcamille)
+
 # # # # # # # # 
 # Bubblesort  #
 # # # # # # # # 

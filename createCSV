@@ -1,4 +1,8 @@
-max=50000
+# Paul-Valentin Mini (pcamille)
+# Usage: createCSV [python sorting script]
+# Change the "max" value to change the range 
+# of words per file sorted. 
+max=25000
 round=1
 total_rounds=$((max / 500))
 echo Starting $0 for $total_rounds rounds: 
