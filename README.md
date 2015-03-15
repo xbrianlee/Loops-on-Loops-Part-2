@@ -22,7 +22,12 @@ Instructions:
 	[text here]
 
 * Javascript:
-	[text here]
+	To run the program: 
+	-Open index.html in a browser, preferably Firefox or Chrome.
+	-Generate a test input file using python script project root directory.
+ 	-Open the Javascript console in the browser.
+	-Open the browser's web console
+ 	-Click the Browse button and open input.txt generated from python script.
 
 * Python:
 	The sorting algorithms can be found under "python/".
