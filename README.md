@@ -56,4 +56,12 @@ Instructions:
 	$ createCSV [python sorting script]
 
 * Haskell:
-	[text here]
+	The sorting algorithms can be found under the “haskell” folder.
+	Included in this folder is also a sample input file called “input.txt”.
+	To run the sorting algorithm’s against this input, load up GHCI by typing
+	“ghci” into your terminal when navigated to the “haskell”folder. Next load
+	the file using “:l [haskell program]. To get the runtime diagnostics and
+	memory usage (in seconds and byte respectively), type in “:set +s”. Finally,
+	type “main” to run the program against the input. The output should be the
+	sorted input file with the last line being the runtime diagnostics and memory
+	usage.
