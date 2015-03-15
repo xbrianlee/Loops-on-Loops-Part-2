@@ -1,13 +1,13 @@
 # Loops-on-Loops-Part-2
 
 Team Members:
-	- Paul-Valentin Mini
-	- Max Hufft
-	- John Kang
-	- Brian Lee
+	* Paul-Valentin Mini
+	* Max Hufft
+	* John Kang
+	* Brian Lee
 
 Instructions:
-	- How to generate an input file:
+	* How to generate an input file:
 		Execute the python program make_tfile.py like so:
 		$ python make_tfile.py [word count] [length of a word]
 
@@ -18,11 +18,11 @@ Instructions:
 		used with various languages and sorting algorithms as 
 		instructed bellow.
 
-	- Java:
+	* Java:
 
-	- Javascript:
+	* Javascript:
 
-	- Python:
+	* Python:
 		The sorting algorithms can be found under "python/".
 		Run each algorithm using the following command:
 		$ python [python program] [input file]
@@ -48,4 +48,4 @@ Instructions:
 		flags, it can be executed using:
 		$ createCSV [python sorting script]
 
-	- Haskell:
+	* Haskell:
