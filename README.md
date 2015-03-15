@@ -19,7 +19,12 @@ Instructions:
 	instructed bellow.
 
 * Java:
-	[text here]
+	The java sorting algorithms can be found in the java folder.
+	Each algorithm must be compiled first using javac. 
+	Once compiled each algorithm can be ran by:
+	java <algorithm> <input file>
+	
+	The output of each algorithm is the time it takes the algorthim to run in milliseconds.
 
 * Javascript:
 	To run the program: 
